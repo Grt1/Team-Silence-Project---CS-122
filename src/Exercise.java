@@ -20,4 +20,9 @@ public class Exercise {
         return intensity;
     }
 
+    @Override
+    public String toString(){
+        return exercise + ", " + hours + ", " + intensity;
+    }
+
 }
