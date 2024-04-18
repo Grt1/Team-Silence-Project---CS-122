@@ -30,8 +30,9 @@ public class App {
                 JTextField ExerciceInputHours = new JTextField(20);
                 JTextField ExerciseInputIntensity = new JTextField(20);
                 JButton submitExercise = new JButton("Submit");
-
-                panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
+                
+                Box.Filler filler = new Box.Filler(new Dimension(0, 0), new Dimension(0, 40), new Dimension(200, 40));
+                panel.add(filler);
                 panel1.add(new JLabel("Enter the name of the workout:"));
                 panel1.add(ExerciseInputName);
                 panel1.add(new JLabel("Enter the length in hours:"));
@@ -45,7 +46,7 @@ public class App {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String name = ExerciseInputName.getText();
-                        int hours = Integer.parseInt(ExerciceInputHours.getText());
+                        double hours = Double.parseDouble(ExerciceInputHours.getText());
                         int intensity = Integer.parseInt(ExerciseInputIntensity.getText());
                         Exercise exercise = new Exercise(name, hours, intensity);
                         logs.add(exercise);
@@ -70,7 +71,7 @@ public class App {
     }
 
     private static void updateDisplayPanel() {
-        exerciseLogs.setText(""); // Clear the text area before updating
+        exerciseLogs.setText(""); 
         for (Exercise exercise : logs) {
             exerciseLogs.append(exercise.toString() + "\n");
         }

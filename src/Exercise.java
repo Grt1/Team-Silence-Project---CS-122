@@ -1,9 +1,9 @@
 public class Exercise {
     private String exercise;
-    private int hours;
-    private int intensity; //Should be a number 1-10
+    private double hours;
+    private int intensity;
     
-    public Exercise(String exercise, int hours, int intensity){
+    public Exercise(String exercise, double hours, int intensity){
         this.exercise = exercise;
         this.hours = hours;
         this.intensity = intensity;
@@ -12,7 +12,7 @@ public class Exercise {
     public String getExercise(){
         return exercise;
     }
-    public int getHours(){
+    public double getHours(){
         return hours;
     }
 
