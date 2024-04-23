@@ -9,9 +9,14 @@ public class App {
     private static ArrayList<Hydration> hydrationLogs = new ArrayList<>();
     private static JTextArea logsTextArea = new JTextArea();
 
+    private static ArrayList<Calorie> calorieLogs = new ArrayList<>();
+    public static JTextArea calorieLogsArea = new JTextArea();
+    public static int totalCalories = 0;
+
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame("Team Silence - Fitness Tracker");
         JPanel panel = new JPanel();
+<<<<<<< HEAD
         JButton exerciseButton = new JButton("Log Workout");
         JButton hydrationButton = new JButton("Log Hydration");
         
@@ -21,6 +26,14 @@ public class App {
         panel.add(new JLabel("Choose an activity to log"));
         panel.add(exerciseButton);
         panel.add(hydrationButton);
+=======
+        JButton Exercise = new JButton("Workout");
+        JButton Calories = new JButton("Calories");
+
+        panel.add(new JLabel("Choose an activity to log"));
+        panel.add(Exercise);
+        panel.add(Calories);
+>>>>>>> a52327faf91a109046d20764982de40a1f560404
         mainFrame.add(panel);
         mainFrame.setSize(300, 200); // Increased height to accommodate the label
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,6 +46,7 @@ public class App {
             }
         });
 
+<<<<<<< HEAD
         hydrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,6 +58,53 @@ public class App {
         logsTextArea.setLineWrap(true);
         logsTextArea.setWrapStyleWord(true);
         panel.add(logsTextArea);
+=======
+        Calories.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame exerciseFrame = new JFrame("Calories");
+                JPanel panel1 = new JPanel();
+                JTextField ExerciceInputHours = new JTextField(20);
+                JTextField ExerciseInputIntensity = new JTextField(20);
+                JButton submitExercise = new JButton("Submit");
+                
+                Box.Filler filler = new Box.Filler(new Dimension(0, 0), new Dimension(0, 40), new Dimension(200, 40));
+                panel.add(filler);
+                panel1.add(new JLabel("Enter the amount of calories gained:"));
+                panel1.add(ExerciceInputHours);
+                panel1.add(new JLabel("Enter the amount of calories spent:"));
+                panel1.add(ExerciseInputIntensity);
+                panel1.add(submitExercise);
+                panel1.add(calorieLogsArea);
+
+                submitExercise.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        int gained = Integer.parseInt(ExerciceInputHours.getText());
+                        int spent = Integer.parseInt(ExerciseInputIntensity.getText());
+                        Calorie calorie = new Calorie(gained, spent);
+                        totalCalories += calorie.getTotalCalories();
+                        calorieLogs.add(calorie);
+                        updateDisplayPanel();
+                    }
+                });
+
+                exerciseFrame.add(panel1);
+                exerciseFrame.setSize(400, 300);
+                exerciseFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                exerciseFrame.setVisible(true);
+            }
+        });
+
+        exerciseLogs.setEditable(false);
+        exerciseLogs.setLineWrap(true);
+        exerciseLogs.setWrapStyleWord(true);
+        calorieLogsArea.setEditable(false);
+        calorieLogsArea.setLineWrap(true);
+        calorieLogsArea.setWrapStyleWord(true);
+        panel.add(exerciseLogs);
+        panel.add(calorieLogsArea);
+>>>>>>> a52327faf91a109046d20764982de40a1f560404
     }
 
     private static void showExerciseLogDialog() {
@@ -122,6 +183,16 @@ public class App {
         for (Hydration hydration : hydrationLogs) {
             logsTextArea.append(hydration.toString() + "\n");
         }
+        calorieLogsArea.setText(""); 
+        for (Calorie calorie : calorieLogs) {
+            calorieLogsArea.append(calorie.toString() + "\n");
+        }
+        calorieLogsArea.append("Total: " + totalCalories);
     }
+<<<<<<< HEAD
 }
 
+=======
+
+}
+>>>>>>> a52327faf91a109046d20764982de40a1f560404
