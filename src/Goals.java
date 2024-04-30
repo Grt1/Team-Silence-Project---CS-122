@@ -1,3 +1,3 @@
-public class Goals {
+public class FitnessTracker {
     
 }
