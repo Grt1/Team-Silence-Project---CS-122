@@ -1,11 +1,12 @@
 import javax.swing.*;
-//import java.awt.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class App {
     private static ArrayList<Exercise> exerciseLogs = new ArrayList<>();
+    private static JTextArea exerciseLogsArea = new JTextArea();
     private static ArrayList<Hydration> hydrationLogs = new ArrayList<>();
     private static JTextArea logsTextArea = new JTextArea();
 
@@ -16,7 +17,6 @@ public class App {
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame("Team Silence - Fitness Tracker");
         JPanel panel = new JPanel();
-<<<<<<< HEAD
         JButton exerciseButton = new JButton("Log Workout");
         JButton hydrationButton = new JButton("Log Hydration");
         
@@ -26,14 +26,10 @@ public class App {
         panel.add(new JLabel("Choose an activity to log"));
         panel.add(exerciseButton);
         panel.add(hydrationButton);
-=======
-        JButton Exercise = new JButton("Workout");
         JButton Calories = new JButton("Calories");
 
         panel.add(new JLabel("Choose an activity to log"));
-        panel.add(Exercise);
         panel.add(Calories);
->>>>>>> a52327faf91a109046d20764982de40a1f560404
         mainFrame.add(panel);
         mainFrame.setSize(300, 200); // Increased height to accommodate the label
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +42,6 @@ public class App {
             }
         });
 
-<<<<<<< HEAD
         hydrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,7 +53,6 @@ public class App {
         logsTextArea.setLineWrap(true);
         logsTextArea.setWrapStyleWord(true);
         panel.add(logsTextArea);
-=======
         Calories.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,15 +90,14 @@ public class App {
             }
         });
 
-        exerciseLogs.setEditable(false);
-        exerciseLogs.setLineWrap(true);
-        exerciseLogs.setWrapStyleWord(true);
+        exerciseLogsArea.setEditable(false);
+        exerciseLogsArea.setLineWrap(true);
+        exerciseLogsArea.setWrapStyleWord(true);
         calorieLogsArea.setEditable(false);
         calorieLogsArea.setLineWrap(true);
         calorieLogsArea.setWrapStyleWord(true);
-        panel.add(exerciseLogs);
+        panel.add(exerciseLogsArea);
         panel.add(calorieLogsArea);
->>>>>>> a52327faf91a109046d20764982de40a1f560404
     }
 
     private static void showExerciseLogDialog() {
@@ -189,10 +182,5 @@ public class App {
         }
         calorieLogsArea.append("Total: " + totalCalories);
     }
-<<<<<<< HEAD
-}
-
-=======
 
 }
->>>>>>> a52327faf91a109046d20764982de40a1f560404

@@ -36,23 +36,7 @@ public class FitnessTracker {
         Random rand = new Random();
         return messages[rand.nextInt(messages.length)];
     }
-    //See if this works
-    // Example usage
-    public static void main(String[] args) {
-        FitnessTracker tracker = new FitnessTracker("Weight loss");
-        System.out.println(tracker.getProgressUpdate()); // Initial progress update
-        System.out.println(tracker.getMotivationalMessage()); // Initial motivational message
-        
-        // Update progress (e.g., after a workout)
-        tracker.updateProgress(20.0);
-        System.out.println(tracker.getProgressUpdate()); // Progress update after workout
-        System.out.println(tracker.getMotivationalMessage()); // Motivational message after workout
-        
-        // Assuming goal is achieved (for demonstration)
-        tracker.updateProgress(100.0); // Set progress to 100%
-        System.out.println(tracker.getProgressUpdate()); // Final progress update
-        System.out.println(tracker.getMotivationalMessage()); // Final motivational message
-    }
+    
 }
 
 
