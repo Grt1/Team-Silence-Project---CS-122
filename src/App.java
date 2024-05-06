@@ -28,7 +28,6 @@ public class App {
         panel.add(hydrationButton);
         JButton Calories = new JButton("Calories");
 
-        panel.add(new JLabel("Choose an activity to log"));
         panel.add(Calories);
         mainFrame.add(panel);
         mainFrame.setSize(300, 200); // Increased height to accommodate the label
