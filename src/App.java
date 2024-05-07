@@ -9,16 +9,19 @@ public class App {
     private static JTextArea exerciseLogsArea = new JTextArea();
     private static ArrayList<Hydration> hydrationLogs = new ArrayList<>();
     private static JTextArea logsTextArea = new JTextArea();
-
     private static ArrayList<Calorie> calorieLogs = new ArrayList<>();
     public static JTextArea calorieLogsArea = new JTextArea();
     public static int totalCalories = 0;
+
+    private static ArrayList<FitnessTracker> FitnessTrackerLogs = new ArrayList<>();
+    private static JTextArea FitnessTrackerTextArea = new JTextArea();
 
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame("Team Silence - Fitness Tracker");
         JPanel panel = new JPanel();
         JButton exerciseButton = new JButton("Log Workout");
         JButton hydrationButton = new JButton("Log Hydration");
+        JButton FitnessTrackerButton = new JButton("Log Goals");
         
         JLabel messageLabel = new JLabel("Welcome to Team Silence - Fitness Tracker!");
         panel.add(messageLabel); // Adding the label to the panel
@@ -26,6 +29,7 @@ public class App {
         panel.add(new JLabel("Choose an activity to log"));
         panel.add(exerciseButton);
         panel.add(hydrationButton);
+        //panel.add(FitnessTrackerButton);
         JButton Calories = new JButton("Calories");
 
         panel.add(Calories);
@@ -48,6 +52,13 @@ public class App {
             }
         });
 
+        FitnessTrackerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showFitnessTrackerLogDialog();
+            }
+        });
+
         logsTextArea.setEditable(false);
         logsTextArea.setLineWrap(true);
         logsTextArea.setWrapStyleWord(true);
@@ -60,6 +71,7 @@ public class App {
                 JTextField ExerciceInputHours = new JTextField(20);
                 JTextField ExerciseInputIntensity = new JTextField(20);
                 JButton submitExercise = new JButton("Submit");
+
                 
                 Box.Filler filler = new Box.Filler(new Dimension(0, 0), new Dimension(0, 40), new Dimension(200, 40));
                 panel.add(filler);
@@ -133,7 +145,8 @@ public class App {
         exerciseFrame.setSize(400, 300);
         exerciseFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         exerciseFrame.setVisible(true);
-    }
+        
+    }   
 
     private static void showHydrationLogDialog() {
         JFrame hydrationFrame = new JFrame("Log Hydration");
@@ -165,6 +178,46 @@ public class App {
         hydrationFrame.setSize(400, 300);
         hydrationFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         hydrationFrame.setVisible(true);
+    }
+
+    private static void showFitnessTrackerLogDialog() {
+        JFrame FitnessTrackerFrame = new JFrame("Log Goals");
+        JPanel panel = new JPanel();
+        JTextField GoalField = new JTextField(20);
+        JTextField ProgressField = new JTextField(20);
+        JButton submitButton = new JButton("Submit");
+
+        panel.add(new JLabel("Enter Your goals:"));
+        panel.add(GoalField);
+        panel.add(new JLabel("Enter Your current progress:"));
+        panel.add(ProgressField);
+        panel.add(submitButton);
+        panel.add(logsTextArea);
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Goal = GoalField.getText();
+                double progress = Double.parseDouble(ProgressField.getText());
+                FitnessTracker goal = new FitnessTracker(Goal);
+                FitnessTrackerLogs.add(goal);
+                updateDisplayPanel();
+                FitnessTrackerFrame.dispose();
+            }
+        });
+
+        FitnessTrackerFrame.add(panel);
+        FitnessTrackerFrame.setSize(400, 300);
+        FitnessTrackerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        FitnessTrackerFrame.setVisible(true);
+
+        FitnessTrackerTextArea.setEditable(false);
+        FitnessTrackerTextArea.setLineWrap(true);
+        FitnessTrackerTextArea.setWrapStyleWord(true);
+        FitnessTrackerTextArea.setEditable(false);
+        FitnessTrackerTextArea.setLineWrap(true);
+        FitnessTrackerTextArea.setWrapStyleWord(true);
+        panel.add(FitnessTrackerTextArea);
     }
 
     private static void updateDisplayPanel() {
